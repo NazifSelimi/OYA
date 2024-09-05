@@ -1,0 +1,1061 @@
+/* gloabal */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: "Arial", sans-serif;
+    background-color: #f9f9fb;
+    color: #040404; /* Primary text color */
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+    position: relative;
+}
+
+a {
+    text-decoration: none;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Container for all background shapes */
+.background-shapes {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: -1; /* Keep shapes behind all content */
+    pointer-events: none; /* Prevent shapes from interfering with user interaction */
+    overflow: visible; /* Ensure shapes are not cut off */
+}
+
+/* Base shape styling */
+.background-shapes .shape {
+    position: absolute;
+    border-radius: 50%; /* For circles */
+    opacity: 0.3; /* Increased opacity for more visibility */
+    animation: floatShape 15s infinite alternate ease-in-out;
+}
+
+/* Filled shapes with bold, saturated colors and adjusted spacing */
+.shape-1 {
+    width: 250px;
+    height: 250px;
+    background-color: #ff3b3f; /* Bright Red */
+    top: 5%;
+    left: 10%; /* Moved further left */
+    animation-delay: 0s;
+}
+
+.shape-2 {
+    width: 180px;
+    height: 180px;
+    background-color: #1e90ff; /* Dodger Blue */
+    top: 30%; /* Increased top spacing */
+    right: 25%; /* Moved further right */
+    animation-delay: 2s;
+}
+
+.shape-3 {
+    width: 200px;
+    height: 200px;
+    background-color: #ffa500; /* Orange */
+    bottom: 10%; /* Adjusted spacing from the bottom */
+    left: 40%; /* Moved further left */
+    animation-delay: 4s;
+}
+
+.shape-4 {
+    width: 150px;
+    height: 150px;
+    background-color: #32cd32; /* Lime Green */
+    top: 60%; /* Increased top spacing */
+    right: 20%; /* Moved further right */
+    animation-delay: 6s;
+}
+
+.shape-5 {
+    width: 220px;
+    height: 220px;
+    background-color: #ff1493; /* Deep Pink */
+    top: 50%; /* Adjusted top position */
+    left: 60%; /* Moved further left */
+    transform: translateX(-50%);
+    animation-delay: 8s;
+}
+
+/* Outlined geometric shapes with thicker outlines */
+.shape-outline {
+    position: absolute;
+    border: 4px solid; /* Thicker outline for more prominence */
+    border-radius: 50%; /* For circles */
+    opacity: 0.25;
+    animation: floatShapeOutline 20s infinite alternate ease-in-out; /* Different animation */
+}
+
+/* Specific outlined shape styles */
+.outline-circle {
+    width: 160px;
+    height: 160px;
+    border-color: #ff3b3f; /* Bright Red outline */
+    top: 10%; /* Adjusted position for more spacing */
+    left: 5%; /* Moved further left */
+    animation-delay: 5s;
+}
+
+.outline-square {
+    width: 200px;
+    height: 200px;
+    border-color: #1e90ff; /* Dodger Blue outline */
+    top: 50%; /* Increased top spacing */
+    right: 15%; /* Moved further right */
+    border-radius: 0; /* Square */
+    animation-delay: 7s;
+}
+
+.outline-triangle {
+    width: 0;
+    height: 0;
+    border-left: 110px solid transparent;
+    border-right: 110px solid transparent;
+    border-bottom: 200px solid #ffa500; /* Orange outline */
+    bottom: 20%; /* Adjusted bottom position */
+    left: 20%; /* Moved further left */
+    opacity: 0.2;
+    animation-delay: 10s;
+}
+
+/* Shape animations */
+@keyframes floatShape {
+    0% {
+        transform: translate(0, 0) scale(1);
+    }
+    100% {
+        transform: translate(30px, -30px) scale(1.1);
+    }
+}
+
+@keyframes floatShapeOutline {
+    0% {
+        transform: translate(0, 0) scale(1);
+    }
+    100% {
+        transform: translate(-20px, 20px) scale(1.05);
+    }
+}
+
+/* Section styling to ensure shapes stay behind content */
+.section {
+    padding: 50px 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1; /* Ensure content appears above the shapes */
+}
+/* Header Styles */
+header {
+    position: fixed; /* Keeps the header at the top */
+    top: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center; /* Centers items vertically */
+    padding: 20px 50px; /* Consistent padding */
+    z-index: 1000; /* Ensures the header stays on top of other elements */
+    background: rgba(
+        255,
+        255,
+        255,
+        0.856
+    ); /* Semi-transparent background */
+    transition: background 0.3s, padding 0.3s; /* Smooth transition */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3); /* Subtle shadow */
+    height: 45px; /* Sets a fixed height for the header */
+    overflow: hidden; /* Prevents content from overflowing */
+}
+.header-container {
+    display: flex; /* Keep the header content in a row */
+    justify-content: space-between; /* Space out logo and nav */
+    align-items: center; /* Center items vertically */
+    width: 100%;
+}
+
+.right-logo {
+    display: flex; /* Keep the right logo in line */
+    align-items: center; /* Center vertically */
+    margin-left: 1px; /* Spacing from the 'Contact' link */
+}
+
+.right-logo-img {
+    height: 90px; /* Adjust the height as needed */
+    width: auto; /* Maintain aspect ratio */
+    display: inline-block; /* Keeps the image inline */
+}
+
+header.scrolled {
+    background: rgba(
+        255,
+        255,
+        255,
+        0.87
+    ); /* More opaque background on scroll */
+    padding: 10px 50px; /* Reduces padding when scrolled */
+    height: 40px;
+}
+
+.logo img {
+    height: 110px; /* Set the logo height */
+    width: auto; /* Maintain aspect ratio */
+    position: absolute; /* Position absolutely within its container */
+    top: 50%; /* Center vertically */
+    transform: translateY(-50%); /* Adjusts for true vertical centering */
+}
+
+nav {
+    display: flex;
+    align-items: center; /* Center navigation items vertically */
+    margin-left: auto;
+}
+nav a {
+    margin: 0 15px;
+    text-decoration: none;
+    color: #000000;
+    font-weight: bold;
+    position: relative; /* For underline effect */
+    transition: color 0.3s;
+}
+
+nav a::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    background: #f05227; /* Underline on hover */
+    left: 0;
+    bottom: -5px;
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+}
+
+nav a:hover::after {
+    transform: scaleX(1); /* Expands underline on hover */
+}
+
+/* Hero Section Styles */
+.hero {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 100px 20px;
+    min-height: 100vh;
+    position: relative;
+    color: #ffffff; /* White text color */
+    overflow: hidden;
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgb(4 4 4 / 62%); /* Slightly lighter overlay */
+    z-index: 1;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 600px;
+    padding-bottom: 100px; /* Space for bottom gradient */
+}
+
+.hero h1 {
+    font-size: 48px;
+    margin-bottom: 20px;
+    line-height: 1.2;
+    font-weight: 800;
+    color: #f5f5f5; /* Primary color */
+}
+
+.hero p {
+    font-size: 18px;
+    margin-bottom: 30px;
+    line-height: 1.5;
+    color: #ffffff; /* White text color */
+}
+
+
+.bottom-fade {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 150px; /* Adjust height of the fade effect */
+    background: linear-gradient(to bottom, transparent, #f9f9fb);
+    z-index: 2;
+}
+
+/* About Us Section Styles */
+.about-us {
+    padding: 50px 20px;
+    background-color: #f8f9fa;
+}
+
+.about-us-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.about-us-content {
+    flex: 1 1 50%;
+    padding: 20px;
+}
+
+.about-us-content h3 {
+    font-size: 14px;
+    color: #6c757d;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.about-us-content h2 {
+    font-size: 28px;
+    color: #274f5c; /* Primary color */
+    margin-bottom: 20px;
+    font-weight: 700;
+}
+
+.about-us-content p {
+    font-size: 16px;
+    color: #040404; /* Primary text color */
+    margin-bottom: 15px;
+}
+
+.about-us-content .cta-button {
+    display: inline-block;
+    margin: 20px auto 0; /* Adds top margin and centers horizontally */
+    padding: 15px 30px; /* Matches padding with other sections */
+    text-align: center; /* Centers text within the button */
+    color: #ffffff; /* White text color */
+    background: #f05227; /* Accent color */
+    border-radius: 30px; /* Rounded corners */
+    font-weight: bold; /* Bold text */
+    transition: background 0.3s, transform 0.3s; /* Smooth transitions */
+    box-shadow: 0 4px 10px rgba(240, 82, 39, 0.3); /* Accent color shadow */
+}
+.cta-button{
+    display: inline-block;
+    margin: 20px auto 0; /* Adds top margin and centers horizontally */
+    padding: 15px 30px; /* Matches padding with other sections */
+    text-align: center; /* Centers text within the button */
+    color: #ffffff; /* White text color */
+    background: #f05227; /* Accent color */
+    border-radius: 30px; /* Rounded corners */
+    font-weight: bold; /* Bold text */
+    transition: background 0.3s, transform 0.3s; /* Smooth transitions */
+    box-shadow: 0 4px 10px rgba(240, 82, 39, 0.3); /* Accent color shadow */
+}
+
+
+.about-us-slideshow {
+    position: relative;
+    flex: 1 1 40%;
+    overflow: hidden;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    height: 300px; /* Set fixed height */
+}
+
+.about-us-slideshow .slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Maintains the aspect ratio of the image */
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+}
+
+.about-us-slideshow .slide.active {
+    opacity: 1;
+}
+
+/* News Section Styles */
+.news-section {
+    padding: 50px 20px; /* Adjusted for responsive padding */
+    background-color: #ffffff;
+    max-width: 1200px; /* Set a max-width to center */
+    margin: 50px auto; /* Center the section */
+}
+
+.news-header {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 30px;
+    flex-wrap: wrap; /* Allow wrapping on smaller screens */
+}
+
+.news-header h2 {
+    font-size: 28px;
+    color: #274f5c; /* Primary color */
+    font-weight: 700;
+}
+
+.sort-options {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap; /* Allow buttons to wrap */
+    margin-top: 10px; /* Adjust top margin for better spacing */
+}
+
+.sort-button {
+    background-color: transparent;
+    border: none;
+    color: #555;
+    font-weight: bold;
+    cursor: pointer;
+    padding: 10px;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+
+
+.news-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 30px;
+    justify-items: center; /* Center items within grid */
+}
+
+.news-card {
+    background: #fff;
+    border-radius: 15px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: transform 0.3s, box-shadow 0.3s;
+    border: 1px solid #eaeaea;
+    max-width: 350px; /* Set a max-width for each card */
+}
+
+.news-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+}
+
+.news-card img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    border-bottom: 1px solid #ddd;
+}
+
+.news-card-content {
+    padding: 20px;
+}
+
+.news-card-content h3 {
+    font-size: 18px;
+    color: #274f5c; /* Primary color */
+    margin-bottom: 10px;
+    font-weight: 600;
+}
+
+.news-card-content p {
+    font-size: 14px;
+    color: #555;
+    margin-bottom: 15px;
+}
+
+.news-card-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 12px;
+    color: #888;
+    border-top: 1px solid #eee;
+    padding-top: 10px;
+}
+
+
+
+
+.about-us {
+    padding: 50px 20px;
+    background-color: #f8f9fa;
+}
+
+.about-us-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.about-us-content {
+    flex: 1 1 50%;
+    padding: 20px;
+}
+
+.about-us-content h3 {
+    font-size: 14px;
+    color: #6c757d;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.about-us-content h2 {
+    font-size: 28px;
+    color: #212529;
+    margin-bottom: 20px;
+    font-weight: 700;
+}
+
+.about-us-content p {
+    font-size: 16px;
+    color: #495057;
+    margin-bottom: 15px;
+}
+
+.more-text {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s ease-out;
+}
+
+.more-text.show {
+    max-height: 1000px; /* Adjust this value according to the expected height of the content */
+}
+
+.about-us-content .cta-button {
+    display: inline-block;
+    margin: 20px auto 0;
+    padding: 15px 30px;
+    text-align: center;
+    color: #fff;
+    background: #f05227;
+    border-radius: 30px;
+    font-weight: bold;
+    transition: background 0.3s, transform 0.3s;
+    box-shadow: 0 4px 10px rgba(240, 82, 39, 0.3);
+}
+
+
+.about-us-slideshow {
+    position: relative;
+    flex: 1 1 40%;
+    overflow: hidden;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    height: 300px;
+}
+
+.about-us-slideshow .slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+}
+
+.about-us-slideshow .slide.active {
+    opacity: 1;
+}
+
+/* General Footer Styles */
+.site-footer {
+    background: #f5f5f5d0;
+    padding: 20px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 80%;
+    max-width: 1200px;
+}
+
+.footer-logo img {
+    height: 60px; /* Adjust size as needed */
+}
+
+.footer-links ul {
+    list-style: none;
+    display: flex;
+    gap: 20px; /* Even spacing between links */
+    padding: 0;
+    margin: 0;
+}
+
+.footer-links a {
+    text-decoration: none;
+    color: #333;
+    font-size: 14px;
+    transition: color 0.3s;
+}
+
+.footer-links a:hover {
+    color: #555; /* Slight hover effect */
+}
+
+.footer-social {
+    display: flex;
+    gap: 10px; /* Even spacing between social icons */
+}
+
+.footer-social a img {
+    width: 20px; /* Adjust icon size */
+    height: 20px;
+    transition: transform 0.3s;
+}
+
+.footer-social a:hover img {
+    transform: scale(1.1); /* Hover effect on icons */
+}
+
+.footer-bottom {
+    margin-top: 20px;
+    text-align: center;
+    font-size: 12px;
+    color: #666;
+    margin-left: 70px;
+}
+
+@media (max-width: 768px) {
+    .footer-container {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .footer-links {
+        margin: 10px 0; /* Add spacing between logo and links */
+    }
+
+    .footer-social {
+        margin-top: 10px; /* Spacing for the icons on smaller screens */
+    }
+}
+/* General Styles */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: "Arial", sans-serif;
+    background-color: #f9f9fb;
+    color: #040404;
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px 50px;
+}
+
+h1 {
+    text-align: center;
+    font-size: 32px;
+    color: #274f5c;
+    margin-bottom: 30px;
+    font-weight: bold;
+}
+
+.news-project-card {
+    display: flex;
+    flex-direction: column;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    overflow: hidden;
+    transition: transform 0.3s;
+}
+
+.news-project-card:hover {
+    transform: translateY(-5px);
+}
+
+.news-project-card img {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+}
+
+.card-content {
+    padding: 20px;
+}
+
+.card-content h2 {
+    font-size: 24px;
+    color: #f05227;
+    margin-bottom: 15px;
+    font-weight: bold;
+}
+
+.card-content p {
+    font-size: 16px;
+    color: #555;
+    line-height: 1.6;
+}
+
+.back-button {
+    display: inline-block;
+    margin: 20px 0;
+    padding: 10px 20px;
+    background-color: #f05227;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background 0.3s, transform 0.3s;
+    text-align: center;
+}
+
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .news-project-card img {
+        height: 200px;
+    }
+
+    .card-content {
+        padding: 15px;
+    }
+
+    .back-button {
+        width: 100%;
+        text-align: center;
+    }
+}
+
+
+/* General Styles */
+
+.container {
+    max-width: 800px;
+    margin: 80px auto;
+    padding: 20px 50px;
+    text-align: center;
+}
+
+h1 {
+    font-size: 32px;
+    color: #274f5c;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+.contact-form {
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.contact-form label {
+    display: block;
+    font-size: 16px;
+    color: #333;
+    margin-bottom: 8px;
+    text-align: justify;
+}
+
+.contact-form input,
+.contact-form textarea {
+    width: 90%;
+    padding: 12px 15px;
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 14px;
+    font-family: inherit;
+    resize: vertical;
+    /* margin-right: 21px; */
+    margin-left: -18px;
+
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+    border-color: #f05227;
+    outline: none;
+    box-shadow: 0 0 5px rgba(240, 82, 39, 0.3);
+}
+
+.contact-form button {
+    display: inline-block;
+    padding: 12px 25px;
+    background-color: #f05227;
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.3s;
+    font-size: 16px;
+}
+
+
+.team-section {
+    padding: 50px 20px;
+    text-align: center;
+    background-color: #f9f9fb;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.team-section h2 {
+    font-size: 28px;
+    color: #274f5c;
+    margin-bottom: 40px;
+    font-weight: 700;
+}
+
+.team-grid {
+    display: flex; /* Change from grid to flex */
+    gap: 20px; /* Adjust gap for a better look */
+    padding: 10px;
+    overflow-x: auto; /* Enables horizontal scrolling */
+    scroll-snap-type: x mandatory; /* Adds snap effect for better UX */
+    -webkit-overflow-scrolling: touch; /* Smooth scrolling on touch devices */
+    scrollbar-width: none; /* Hide scrollbar on Firefox */
+    max-width: 100%; /* Allow it to take full width */
+}
+
+.team-grid::-webkit-scrollbar {
+    display: none; /* Hide scrollbar for WebKit browsers */
+}
+
+.team-member {
+    flex: 0 0 auto; /* Ensure items do not shrink and maintain their width */
+    width: 150px; /* Set a fixed width for consistent item sizes */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    scroll-snap-align: start; /* Snap each item to the start */
+}
+
+.team-member img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 15px;
+    border: 3px solid #f05227; /* Add border to resonate with youth */
+}
+
+.team-member h3 {
+    font-size: 16px;
+    color: #274f5c;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.team-member p {
+    font-size: 14px;
+    color: #040404;
+    margin: 0;
+}
+html {
+    scroll-behavior: smooth;
+}
+/* Responsive Design for Phones and Touch Screens */
+/* Responsive Design */
+@media (max-width: 768px) {
+    /* Header adjustments */
+    header {
+        padding: 10px 20px; /* Reduce padding */
+        height: auto; /* Let height adjust automatically */
+    }
+
+
+    .logo img {
+        height: 80px; /* Adjust logo size */
+        margin-bottom: 10px; /* Add space between logo and nav */
+    }
+
+    /* Hero Section adjustments */
+    .hero {
+        padding: 50px 10px; /* Reduce padding */
+        text-align: center; /* Center text */
+        background-size: cover; /* Maintain background cover */
+    }
+
+    .hero h1 {
+        font-size: 32px; /* Adjust font size */
+    }
+
+    .hero p {
+        font-size: 16px; /* Adjust font size */
+    }
+
+    .cta-button {
+        padding: 10px 20px; /* Adjust button padding */
+    }
+
+
+
+    /* News Section adjustments */
+    .news-cards {
+        grid-template-columns: 1fr; /* Single column layout */
+        gap: 20px; /* Adjust gap */
+    }
+
+    .news-card {
+        max-width: 100%; /* Allow full width */
+    }
+
+    .news-card img {
+        height: 150px; /* Adjust image height */
+    }
+
+    /* Contact Form adjustments */
+    .contact-form {
+        padding: 20px; /* Reduce padding */
+    }
+
+    /* Footer adjustments */
+    .footer-container {
+        flex-direction: column; /* Stack items vertically */
+        align-items: center; /* Center items */
+        text-align: center; /* Center text */
+    }
+
+    .footer-links ul {
+        flex-wrap: wrap; /* Allow wrapping of links */
+        gap: 10px; /* Adjust spacing */
+        justify-content: center; /* Center links */
+    }
+
+    .footer-social {
+        margin-top: 10px; /* Add margin above social icons */
+    }
+}
+@media (max-width: 768px) {
+    .background-shapes {
+        display: flex; /* Hide shapes on smaller screens for simplicity */
+    }
+
+    /* Adjust background size for smaller screens */
+    .hero {
+        background-size: cover; /* Maintain aspect ratio and cover screen */
+        background-position: center; /* Center background image */
+    }
+}
+/* Detect touch devices and remove hover effects */
+
+
+
+/* Burger menu styles */
+.burger-menu {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+.burger-menu span {
+    height: 3px;
+    width: 25px;
+    background-color: #333;
+    margin: 4px 0;
+}
+
+/* Header and navigation adjustments for smaller screens */
+@media (max-width: 768px) {
+    .header-container {
+        display: flex; /* Use Flexbox for layout */
+        justify-content: space-between; /* Space between logo and burger menu */
+        align-items: center; /* Center items vertically */
+        padding: 0 20px; /* Add padding for space on both sides */
+        width: 100%; /* Ensure it takes the full width */
+        box-sizing: border-box; /* Include padding in the width calculation */
+    }
+    header.scrolled {
+        display: flex; /* Use Flexbox for layout */
+        justify-content: space-between; /* Space between logo and burger menu */
+        align-items: center; /* Center items vertically */
+        padding: 0 20px; /* Add padding for space on both sides */
+        width: 100%; /* Ensure it takes the full width */
+        box-sizing: border-box; /* Include padding in the width calculation */
+    }
+
+
+    .logo {
+        margin-right: auto; /* Ensure the logo stays on the far left */
+    }
+
+    .nav-links {
+        display: none; /* Hide navigation links by default */
+        flex-direction: column;
+        position: absolute;
+        top: 60px; /* Position below the header */
+        left: 0;
+        right: 0;
+        background-color: #fff;
+        padding: 20px;
+        z-index: 1001; /* Ensure it's above other content */
+    }
+
+    .nav-links.active {
+        display: flex; /* Show navigation when active */
+    }
+
+    .burger-menu {
+        display: flex; /* Show burger menu icon */
+        position: relative; /* Keep it in the normal flow of Flexbox */
+        z-index: 1002; /* Ensure it's above the navigation links */
+        cursor: pointer; /* Change cursor to pointer for better UX */
+        margin-left: auto; /* Push to the far right */
+    }
+
+    .burger-menu span {
+        display: block;
+        width: 25px; /* Set width for each line of the burger */
+        height: 3px; /* Set height for each line of the burger */
+        background-color: #000; /* Burger line color */
+        margin: 4px 0; /* Space between the lines */
+    }
+}
+
+@media (max-width: 768px) {
+    .about-us-container {
+        display: flex;
+        flex-direction: row; /* Stack content vertically */
+        padding: 20px; /* Adjust padding for mobile view */
+    }
+
+    .about-us-content {
+        margin-bottom: 20px; /* Add spacing between content and slideshow */
+        width: 100%; /* Ensure full width */
+
+    }
+
+
+}
